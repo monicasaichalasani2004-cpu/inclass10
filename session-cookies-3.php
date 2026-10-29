@@ -1,0 +1,5 @@
+<?php
+session_start();
+$authorized = ($_SESSION['authorized'] ?? '') === 'ok';
+?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Protected Lab</title><link rel="stylesheet" href="styles.css"></head><body><main class="container"><header><span class="eyebrow">CSC 4370 / 6370 • Exercise 10</span><h1>Protected Session Page</h1></header><section class="panel"><?php if ($authorized): ?><h2 class="success">Access granted</h2><p>You are authorized because the server has <code>$_SESSION['authorized'] = 'ok'</code>.</p><p>Try refreshing or revisiting this page. Then delete <code>PHPSESSID</code> in DevTools and retry.</p><?php else: ?><h2>Access denied</h2><p>You must sign in before viewing the protected content.</p><a class="link-button" href="session-cookies-1.php">Go to login</a><?php endif; ?></section><nav><a href="session-cookies-1.php">Cookie lab</a><a href="session-cookies-2.php">Login status</a><a href="logout.php">Log out</a></nav></main></body></html>
